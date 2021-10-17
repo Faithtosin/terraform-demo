@@ -8,6 +8,11 @@ variable "asg_id" {
   description = "Autoscaling group id"
 }
 
+variable "launch_configuration_id" {
+  description = "Autoscaling group id"
+}
+
+
 variable "security-groups-list" {
   type        = list(string)
   description = "security group ids to be associated  with the load balancer"
