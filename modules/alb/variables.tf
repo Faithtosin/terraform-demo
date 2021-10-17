@@ -8,9 +8,6 @@ variable "asg_id" {
   description = "Autoscaling group id"
 }
 
-variable "launch_configuration_id" {
-  description = "Autoscaling group id"
-}
 
 
 variable "security-groups-list" {
