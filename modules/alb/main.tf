@@ -8,9 +8,8 @@ resource "aws_lb" "test-alb" {
   name               = var.alb-name
   internal           = false
   load_balancer_type = var.lbtype
-  vpc_id   	     = var.vpc-id
-  security_groups    = var.security-groups
-  subnets            = var.subnets
+  vpc_id             = var.vpc-id
+
 }
 
 
@@ -23,7 +22,7 @@ resource "aws_lb_listener" "test_listener" {
     type             = "forward"
     target_group_arn = aws_lb_target_group.test-tg.arn
   }
-  depends_on = [ aws_lb_target_group.test-tg 
+  depends_on = [aws_lb_target_group.test-tg
   ]
 }
 
@@ -40,7 +39,7 @@ resource "aws_lb_listener_rule" "test_rule" {
       values = ["/test/*"]
     }
   }
-  depends_on = [ aws_lb_target_group.test-tg , aws_lb_listener_rule.test_rule
+  depends_on = [aws_lb_target_group.test-tg, aws_lb_listener_rule.test_rule
   ]
 }
 
@@ -53,13 +52,13 @@ resource "aws_lb_target_group" "test-tg" {
 
 # for auto scalling attachment
 
-module "ASG" {
-  source  = "terraform-demo/modules/asg"
+module "asg" {
+  source = "./asg"
 }
 
 resource "aws_autoscaling_attachment" "alb-attachment-asg" {
   alb_target_group_arn   = aws_lb_target_group.test-tg.arn
-  autoscaling_group_name = module.ASG.test-asg.id
+  autoscaling_group_name = module.asg.test-asg.id
 }
 
 

@@ -7,8 +7,8 @@ terraform {
   }
 }
 
-module "LC" {
-  source = "./terraform-demo/modules/lc"
+module "lc" {
+  source = "./lc"
 }
 
 resource "aws_autoscaling_group" "asg" {
@@ -18,7 +18,7 @@ resource "aws_autoscaling_group" "asg" {
   health_check_grace_period = var.health-check-grace-period
   health_check_type         = var.health-check-type
   desired_capacity          = var.desired-capacity
-  launch_configuration      = module.LC.launch-config.id
+  launch_configuration      = module.lc.launch-config.id
   vpc_zone_identifier       = var.subnets
 
 }

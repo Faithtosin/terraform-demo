@@ -38,6 +38,6 @@ variable "desired-capacity" {
 variable "var.subnets" {
   type        = list(string)
   description = "list of subnets to associate with autoscalling group."
-  default     = ["subnet-xxxxxxxx"]
+  default     = ["subnet-04d9ba157b61c1802"]
 }
 

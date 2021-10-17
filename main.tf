@@ -1,8 +1,11 @@
-resource "aws_ecs_cluster" "test_cluster" {
-  name = variable.cluster_name
 
-  setting {
-    name  = "containerInsights"
-    value = "enabled"
-  }
+
+module "alb" {
+  source  = "./modules/alb"
+}
+module "asg" {
+  source  = "./modules/asg"
+}
+module "lc" {
+  source  = "./modules/lc"
 }
