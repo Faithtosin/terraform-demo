@@ -50,15 +50,11 @@ resource "aws_lb_target_group" "test-tg" {
   vpc_id   = var.vpc-ip
 }
 
-# for auto scalling attachment
 
-module "asg" {
-  source = "./asg"
-}
 
 resource "aws_autoscaling_attachment" "alb-attachment-asg" {
   alb_target_group_arn   = aws_lb_target_group.test-tg.arn
-  autoscaling_group_name = module.asg.test-asg.id
+  autoscaling_group_name = var.asg_id
 }
 
 

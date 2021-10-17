@@ -1,6 +1,5 @@
 
 
-output "launch-config" {
-  value       = aws_launch_configuration.test_config
-  description = "lc module contents"
+output "id" {
+  value   = aws_launch_configuration.test_conf.id
 }
