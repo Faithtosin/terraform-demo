@@ -1,6 +1,6 @@
 variable "alb-name" {
   description = "the desired name for the load balancer"
-  default     = "somename "
+  default     = "somename"
 }
 
 
